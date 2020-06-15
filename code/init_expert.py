@@ -120,7 +120,7 @@ for epoch in range(epochs):
 		prediction = prediction[:,coords_mask]
 		gt_coords = gt_coords[:,coords_mask]
 
-		loss = torch.norm(prediction - gt_coords, dim=0)
+		loss = torch.norm(prediction - gt_coords, p=1, dim=0)
 
 		# soft clamping of loss for stability
 		loss_l1 = loss[loss <= opt.cutloss]
